@@ -37,9 +37,17 @@ var lettersGuessed = document.getElementById("letters-guessed");
 
 var alreadyGuessed= [];
 
+var lettersAndBlanks ="";
+
+for(var i=0; i<wordToGuess.length; i++){
+    lettersAndBlanks += "_ ";
+}
+
+console.log("lettersAndBlanks is " + lettersAndBlanks);
+
 console.log(lettersGuessed);
 
- lettersGuessed.textContent = "Hello";
+ lettersGuessed.textContent = "None";
 
 //grabs "wins-amount" from the html 
 var scoreCounter = document.getElementById("wins-amount");
@@ -56,11 +64,16 @@ document.onkeyup = function(event){
     var userInput = event.key;
     alert("You just pushed " + userInput);
 
-    lettersGuessed.push(userInput);
+    //if userInput is in wordToGuess
+    //then add it to letters-and-blanks
+
+    //else
+    //adds any key pressed to alreadyGuessed array
+    alreadyGuessed.push(userInput);
     console.log(lettersGuessed);
 
-
-    lettersGuessed.textContent = "userInput is " + userInput;
+    //send the alreadyGuessed array back to the html file
+    lettersGuessed.textContent = alreadyGuessed;
 
 
 
