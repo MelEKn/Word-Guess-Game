@@ -37,10 +37,17 @@ var lettersGuessed = document.getElementById("letters-guessed");
 
 var alreadyGuessed= [];
 
-var lettersAndBlanks ="";
+var lettersAndBlanks="";
 
 for(var i=0; i<wordToGuess.length; i++){
-    lettersAndBlanks += "_ ";
+    //if there's a space for multiple words, put a space in lettersAndBlanks
+    if(wordToGuess[i]===" "){
+        lettersAndBlanks += " ";
+    }
+    //Otherwise, add a blank
+    else{
+    lettersAndBlanks += "_";
+    }
 }
 
 console.log("lettersAndBlanks is " + lettersAndBlanks);
@@ -66,9 +73,19 @@ document.onkeyup = function(event){
 
     //if userInput is in wordToGuess
     //then add it to letters-and-blanks
+    for(var i=0; i<wordToGuess.length; i++){
+        if(wordToGuess[i] === userInput){
+            console.log(lettersAndBlanks[i] + "is the blank");
+            console.log(wordToGuess[i] + " is wordToGuess[i]")
+            lettersAndBlanks[i] = wordToGuess[i];
+            console.log(lettersAndBlanks[i] + " is lettersAndBlanks[i]");
+            console.log("The if statement ran");
+            console.log("lettersAndBlanks is " + lettersAndBlanks);
+        }
+    }
 
     //else
-    //adds any key pressed to alreadyGuessed array
+    //adds key pressed to alreadyGuessed array
     alreadyGuessed.push(userInput);
     console.log(lettersGuessed);
 
