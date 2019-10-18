@@ -14,9 +14,9 @@ var HalloweenWords = ["skeleton",
             "decorations",
             "broomstick",
             "spooky",
-            "Frankenstein",
-            "October",
-            "Dracula"
+            "frankenstein",
+            "october",
+            "dracula"
 ]
 
 //Randomly choose one word from the array HalloweenWords for the user to guess
@@ -56,11 +56,7 @@ for(var i=0; i<wordToGuess.length; i++){
 
 
 console.log("lettersAndBlanks is " + lettersAndBlanks);
-lettersAndBlanksString = document.getElementById("letters-and-blanks"); 
-
 console.log("lettersAndBlanksString is " + lettersAndBlanksString);
-
-
 
 console.log(lettersGuessed);
 
@@ -73,7 +69,10 @@ var scoreCounter = document.getElementById("wins-amount");
 //to "wins-amount" in the html file
 var counter = 0;
 scoreCounter.textContent = counter;
-console.log(scoreCounter);
+console.log("scoreCounter is " + scoreCounter);
+
+//initialize variable to say whether the letter was in the word, and sets it to true
+var notInWord = true;
 
 
 
@@ -92,16 +91,46 @@ document.onkeyup = function(event){
             console.log(lettersAndBlanks[i] + " is lettersAndBlanks[i]");
             console.log("The if statement ran");
             console.log("lettersAndBlanks is " + lettersAndBlanks);
+            
+    //sets notInWord to false if the letter was in the word
+     notInWord = false;
+
+      
+
         }
+        
+            
+           
     }
+    console.log(lettersAndBlanks[i] + " is lettersAndBlanks[i]");
+    console.log("lettersAndBlanks is " + lettersAndBlanks);
+
+    //temporarily resets letters-and-blanks to empty
+    lettersAndBlanksString.textContent = "";
+
+    //puts the appropriate letters and blank spaces in letters-and-blanks in the html
+     for(var k=0; k<wordToGuess.length; k++){
+         lettersAndBlanksString.textContent += (lettersAndBlanks[k] + " ");
+     }
+
+    
+     console.log("notInWord is " + notInWord);
 
     //else
     //adds key pressed to alreadyGuessed array
+    if(notInWord){
     alreadyGuessed.push(userInput);
+    notInWord = false;
+    }
     console.log(lettersGuessed);
+    
+    
+    console.log("notInWord is " + notInWord);
 
     //send the alreadyGuessed array back to the html file
     lettersGuessed.textContent = alreadyGuessed;
+
+
 
 
 
