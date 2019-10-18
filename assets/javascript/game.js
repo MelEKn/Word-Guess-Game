@@ -45,13 +45,19 @@ var lettersAndBlanks=[];
 //grabs "wins-amount" from the html 
 var scoreCounter = document.getElementById("wins-amount");
 
+//grabs "guesses-left" from the html
+var guessesLeft = document.getElementById("guesses-left");
+
+//creates a variable "guesses" that keeps track of how many guesses are left
+
+var guesses = 12;
+
 //initializes counter as equal to zero, and sends it back
 //to "wins-amount" in the html file
 var counter = 0;
 scoreCounter.textContent = counter;
 console.log("scoreCounter is " + scoreCounter);
 
-//initialize variable to say whether the letter was in the word, and sets it to true
 
 
 
@@ -73,12 +79,21 @@ for(var i=0; i<wordToGuess.length; i++){
 }
 
 
+
+//sends guessesLeft back to the HTML
+guessesLeft.textContent = guesses;
+
+
 console.log("lettersAndBlanks is " + lettersAndBlanks);
 console.log("lettersAndBlanksString is " + lettersAndBlanksString);
 
 console.log(lettersGuessed);
     var userInput = event.key;
     alert("You just pushed " + userInput);
+
+
+//initialize variable to say whether the letter was not in the word, and sets it to true
+
     
 var notInWord = true;
     
@@ -124,16 +139,22 @@ var notInWord = true;
     alreadyGuessed.push(userInput);
     notInWord = false;
     }
-    console.log(lettersGuessed);
-    
+
+    console.log("alreadyGuessed is " + alreadyGuessed);
+
+    //sets variable "guesses" to 12 minus however many letters the user has guessed
+    guesses = 12 - alreadyGuessed.length;
+
+    console.log("guesses is " + guesses);
     
     console.log("notInWord is " + notInWord);
 
+    //send the number of guesses left back to the html
+
+    guessesLeft.textContent = guesses;
+
     //send the alreadyGuessed array back to the html file
     lettersGuessed.textContent = alreadyGuessed;
-
-
-
 
 
 }
