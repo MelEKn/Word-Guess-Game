@@ -3,14 +3,14 @@
 var HalloweenWords = ["skeleton",
             "pumpkin",
             "witch",
-            "trick or treat",
-            "All Hallows Eve",
+            "spiderweb",
+            "Samhain",
             "costume",
             "scarecrow",
             "candy",
             "ghost",
-            "candy corn",
-            "apple cider",
+            "chocolate",
+            "cider",
             "decorations",
             "broomstick",
             "spooky",
@@ -37,20 +37,30 @@ var lettersGuessed = document.getElementById("letters-guessed");
 
 var alreadyGuessed= [];
 
-var lettersAndBlanks="";
+var lettersAndBlanks=[];
+var lettersAndBlanksString = document.getElementById("letters-and-blanks"); 
+console.log("lettersAndBlanksString is " + lettersAndBlanksString);
+
+//set letters-and-blanks to be empty
+
+ lettersAndBlanksString.textContent=" ";
 
 for(var i=0; i<wordToGuess.length; i++){
-    //if there's a space for multiple words, put a space in lettersAndBlanks
-    if(wordToGuess[i]===" "){
-        lettersAndBlanks += " ";
-    }
-    //Otherwise, add a blank
-    else{
-    lettersAndBlanks += "_";
-    }
+    //put a _ into lettersAndBlanks for each letter in wordToGuess
+    lettersAndBlanks.push("_");
+
+    //set letters-and-blanks to be as many _ as there are letters in the wordToGuess 
+     lettersAndBlanksString.textContent += lettersAndBlanks[i] + " ";
+    
 }
 
+
 console.log("lettersAndBlanks is " + lettersAndBlanks);
+lettersAndBlanksString = document.getElementById("letters-and-blanks"); 
+
+console.log("lettersAndBlanksString is " + lettersAndBlanksString);
+
+
 
 console.log(lettersGuessed);
 
@@ -70,6 +80,7 @@ console.log(scoreCounter);
 document.onkeyup = function(event){
     var userInput = event.key;
     alert("You just pushed " + userInput);
+    
 
     //if userInput is in wordToGuess
     //then add it to letters-and-blanks
