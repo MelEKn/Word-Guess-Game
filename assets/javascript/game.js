@@ -38,7 +38,25 @@ var lettersGuessed = document.getElementById("letters-guessed");
 var alreadyGuessed= [];
 
 var lettersAndBlanks=[];
-var lettersAndBlanksString = document.getElementById("letters-and-blanks"); 
+
+
+ lettersGuessed.textContent = "None";
+
+//grabs "wins-amount" from the html 
+var scoreCounter = document.getElementById("wins-amount");
+
+//initializes counter as equal to zero, and sends it back
+//to "wins-amount" in the html file
+var counter = 0;
+scoreCounter.textContent = counter;
+console.log("scoreCounter is " + scoreCounter);
+
+//initialize variable to say whether the letter was in the word, and sets it to true
+
+
+
+document.onkeyup = function(event){
+    var lettersAndBlanksString = document.getElementById("letters-and-blanks"); 
 console.log("lettersAndBlanksString is " + lettersAndBlanksString);
 
 //set letters-and-blanks to be empty
@@ -59,23 +77,6 @@ console.log("lettersAndBlanks is " + lettersAndBlanks);
 console.log("lettersAndBlanksString is " + lettersAndBlanksString);
 
 console.log(lettersGuessed);
-
- lettersGuessed.textContent = "None";
-
-//grabs "wins-amount" from the html 
-var scoreCounter = document.getElementById("wins-amount");
-
-//initializes counter as equal to zero, and sends it back
-//to "wins-amount" in the html file
-var counter = 0;
-scoreCounter.textContent = counter;
-console.log("scoreCounter is " + scoreCounter);
-
-//initialize variable to say whether the letter was in the word, and sets it to true
-
-
-
-document.onkeyup = function(event){
     var userInput = event.key;
     alert("You just pushed " + userInput);
     
