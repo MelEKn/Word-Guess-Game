@@ -1,46 +1,48 @@
 //var favColor = prompt("What is your favorite color?");
 
 var HalloweenWords = ["skeleton",
-            "pumpkin",
-            "witch",
-            "spiderweb",
-            "Samhain",
-            "costume",
-            "scarecrow",
-            "candy",
-            "ghost",
-            "chocolate",
-            "cider",
-            "decorations",
-            "broomstick",
-            "spooky",
-            "frankenstein",
-            "october",
-            "dracula"
+    "pumpkin",
+    "witch",
+    "spiderweb",
+    "Samhain",
+    "costume",
+    "scarecrow",
+    "candy",
+    "ghost",
+    "chocolate",
+    "cider",
+    "decorations",
+    "broomstick",
+    "spooky",
+    "frankenstein",
+    "october",
+    "dracula"
 ]
 
-//Randomly choose one word from the array HalloweenWords for the user to guess
-var wordToGuess =  HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)]; 
+
 
 //Initialize counter of how many wins at 0
 var winCounter = 0;
 
+//Randomly choose one word from the array HalloweenWords for the user to guess
+var wordToGuess = HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)];
+
 //Initialize counter of how many guesses left at 12
-var guessesLeft = 12; 
+var guessesLeft = 12;
 
 console.log("The word to guess is " + wordToGuess);
 
 //initializes lettersGuessed to the html file id "letters-guessed"
 //and sets it as an empty array
 
-var lettersGuessed = document.getElementById("letters-guessed"); 
+var lettersGuessed = document.getElementById("letters-guessed");
 
-var alreadyGuessed= [];
+var alreadyGuessed = [];
 
-var lettersAndBlanks=[];
+var lettersAndBlanks = [];
 
 
- lettersGuessed.textContent = "None";
+lettersGuessed.textContent = "None";
 
 //grabs "wins-amount" from the html 
 var scoreCounter = document.getElementById("wins-amount");
@@ -60,65 +62,77 @@ console.log("scoreCounter is " + scoreCounter);
 
 
 
+//when the user presses a key
+document.onkeyup = function (event) {
+    var lettersAndBlanksString = document.getElementById("letters-and-blanks");
+    console.log("lettersAndBlanksString is " + lettersAndBlanksString);
 
-document.onkeyup = function(event){
-    var lettersAndBlanksString = document.getElementById("letters-and-blanks"); 
-console.log("lettersAndBlanksString is " + lettersAndBlanksString);
+    //set letters-and-blanks to be empty
 
-//set letters-and-blanks to be empty
+    lettersAndBlanksString.textContent = " ";
 
- lettersAndBlanksString.textContent=" ";
+    for (var i = 0; i < wordToGuess.length; i++) {
+        //put a _ into lettersAndBlanks for each letter in wordToGuess
+        lettersAndBlanks.push("_");
 
-for(var i=0; i<wordToGuess.length; i++){
-    //put a _ into lettersAndBlanks for each letter in wordToGuess
-    lettersAndBlanks.push("_");
+        //set letters-and-blanks to be as many _ as there are letters in the wordToGuess 
+        lettersAndBlanksString.textContent += lettersAndBlanks[i] + " ";
 
-    //set letters-and-blanks to be as many _ as there are letters in the wordToGuess 
-     lettersAndBlanksString.textContent += lettersAndBlanks[i] + " ";
-    
-}
-
-
-
-//sends guessesLeft back to the HTML
-guessesLeft.textContent = guesses;
+    }
 
 
-console.log("lettersAndBlanks is " + lettersAndBlanks);
-console.log("lettersAndBlanksString is " + lettersAndBlanksString);
 
-console.log(lettersGuessed);
+    //sends guessesLeft back to the HTML
+    guessesLeft.textContent = guesses;
+
+
+    console.log("lettersAndBlanks is " + lettersAndBlanks);
+    console.log("lettersAndBlanksString is " + lettersAndBlanksString);
+
+    console.log(lettersGuessed);
     var userInput = event.key;
     alert("You just pushed " + userInput);
 
 
-//initialize variable to say whether the letter was not in the word, and sets it to true
+    //initialize variable to say whether the letter was not in the word, and sets it to true
 
-    
-var notInWord = true;
-    
+
+    var notInWord = true;
+
 
     //if userInput is in wordToGuess
     //then add it to letters-and-blanks
-    for(var i=0; i<wordToGuess.length; i++){
-        if(wordToGuess[i] === userInput){
+    for (var i = 0; i < wordToGuess.length; i++) {
+        if (wordToGuess[i] === userInput) {
             console.log(lettersAndBlanks[i] + "is the blank");
             console.log(wordToGuess[i] + " is wordToGuess[i]")
             lettersAndBlanks[i] = wordToGuess[i];
             console.log(lettersAndBlanks[i] + " is lettersAndBlanks[i]");
             console.log("The if statement ran");
             console.log("lettersAndBlanks is " + lettersAndBlanks);
-            
-    //sets notInWord to false if the letter was in the word
-     notInWord = false;
 
-      
+            //sets notInWord to false if the letter was in the word
+            notInWord = false;
+
+
 
         }
-        
-            
-           
+
+
+
     }
+
+    //creates checkLetters and sets it equal to what lettersAndBlanks should be (workaround)
+    var checkLetters = [];
+
+    for(var j = 0; j<wordToGuess.length; j++){
+        checkLetters[j] = lettersAndBlanks[j];
+    }
+
+    console.log("checkLetters is " + checkLetters);
+
+
+
     console.log(lettersAndBlanks[i] + " is lettersAndBlanks[i]");
     console.log("lettersAndBlanks is " + lettersAndBlanks);
 
@@ -126,18 +140,18 @@ var notInWord = true;
     lettersAndBlanksString.textContent = "";
 
     //puts the appropriate letters and blank spaces in letters-and-blanks in the html
-     for(var k=0; k<wordToGuess.length; k++){
-         lettersAndBlanksString.textContent += (lettersAndBlanks[k] + " ");
-     }
+    for (var k = 0; k < wordToGuess.length; k++) {
+        lettersAndBlanksString.textContent += (lettersAndBlanks[k] + " ");
+    }
 
-    
-     console.log("notInWord is " + notInWord);
+
+    console.log("notInWord is " + notInWord);
 
     //else
     //adds key pressed to alreadyGuessed array
-    if(notInWord){
-    alreadyGuessed.push(userInput);
-    notInWord = false;
+    if (notInWord) {
+        alreadyGuessed.push(userInput);
+        notInWord = false;
     }
 
     console.log("alreadyGuessed is " + alreadyGuessed);
@@ -146,7 +160,7 @@ var notInWord = true;
     guesses = 12 - alreadyGuessed.length;
 
     console.log("guesses is " + guesses);
-    
+
     console.log("notInWord is " + notInWord);
 
     //send the number of guesses left back to the html
@@ -158,4 +172,4 @@ var notInWord = true;
 
 
 }
-    console.log("The javascript is running");
+console.log("The javascript is running");
