@@ -45,7 +45,7 @@ var guessesLeft = document.getElementById("guesses-left");
 var wordToGuess = HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)];
 
 //Initialize counter of how many guesses left at 12
-var guessesLeft = 12;
+// var guessesLeft = 12;
 
 console.log("The word to guess is " + wordToGuess);
 
@@ -191,12 +191,14 @@ document.onkeyup = function (event) {
         //picks a new word
         wordToGuess = HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)];
         //sets all the variables back to their original values
-        guessesLeft = 12;
         console.log("The word to guess is " + wordToGuess);
         alreadyGuessed = [];
         lettersAndBlanks = [];
         lettersGuessed.textContent = "None";
         guesses = 12;
+        
+        guessesLeft.textContent = guesses;
+        lettersAndBlanksString.textContent = "Press any key for new game!";
         
 
     }
