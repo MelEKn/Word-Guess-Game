@@ -184,6 +184,7 @@ document.onkeyup = function (event) {
         hasWon = true;
     }
 
+    //if the user wins
     if(hasWon){
         console.log("The user has won!!!");
         counter++;
@@ -198,9 +199,25 @@ document.onkeyup = function (event) {
         guesses = 12;
         
         guessesLeft.textContent = guesses;
-        lettersAndBlanksString.textContent = "Press any key for new game!";
+        lettersAndBlanksString.textContent = "Congratulations, you won! Press any key for your next game!";
         
 
+    }
+
+    //if the user loses, start a new game the same way as above,
+    //except that "counter" isn't increased
+    if(guesses==0){
+        console.log("The user has lost")
+        wordToGuess = HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)];
+        //sets all the variables back to their original values
+        console.log("The word to guess is " + wordToGuess);
+        alreadyGuessed = [];
+        lettersAndBlanks = [];
+        lettersGuessed.textContent = "None";
+        guesses = 12;
+        
+        guessesLeft.textContent = guesses;
+        lettersAndBlanksString.textContent = "Oh no, you lost! Press any key to begin another game!"
     }
 }
 console.log("The javascript is running");
