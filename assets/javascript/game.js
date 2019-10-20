@@ -4,7 +4,7 @@ var HalloweenWords = ["skeleton",
     "pumpkin",
     "witch",
     "spiderweb",
-    "Samhain",
+    "samhain",
     "costume",
     "scarecrow",
     "candy",
@@ -33,6 +33,14 @@ var counter = 0;
 scoreCounter.textContent = counter;
 console.log("scoreCounter is " + scoreCounter);
 
+//grabs letters-guessed from the HTML
+var lettersGuessed = document.getElementById("letters-guessed");
+
+//grabs "guesses-left" from the html
+var guessesLeft = document.getElementById("guesses-left");
+
+
+
 //Randomly choose one word from the array HalloweenWords for the user to guess
 var wordToGuess = HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)];
 
@@ -41,29 +49,16 @@ var guessesLeft = 12;
 
 console.log("The word to guess is " + wordToGuess);
 
-//initializes lettersGuessed to the html file id "letters-guessed"
-//and sets it as an empty array
-
-var lettersGuessed = document.getElementById("letters-guessed");
-
 var alreadyGuessed = [];
 
 var lettersAndBlanks = [];
 
-
 lettersGuessed.textContent = "None";
 
-
-
-//grabs "guesses-left" from the html
-var guessesLeft = document.getElementById("guesses-left");
 
 //creates a variable "guesses" that keeps track of how many guesses are left
 
 var guesses = 12;
-
-
-
 
 
 //when the user presses a key
@@ -135,15 +130,10 @@ document.onkeyup = function (event) {
 
     console.log("checkLetters is " + checkLetters);
 
-    var checkForBlanks = true;
+    var hasWon = false;
 
-    if(checkLetters.indexOf("_")==(-1)){
-        checkForBlanks = false;
-    }
 
-    if(!checkForBlanks){
-        console.log("checkForBlanks is false!!!");
-    }
+
 
 
 
@@ -170,6 +160,7 @@ document.onkeyup = function (event) {
     if (notInWord) {
         alreadyGuessed.push(userInput);
         notInWord = false;
+        
     }
 
     console.log("alreadyGuessed is " + alreadyGuessed);
@@ -188,6 +179,26 @@ document.onkeyup = function (event) {
     //send the alreadyGuessed array back to the html file
     lettersGuessed.textContent = alreadyGuessed;
 
+    //checks if the user has won
+    if(checkLetters.indexOf("_")==(-1)){
+        hasWon = true;
+    }
 
+    if(hasWon){
+        console.log("The user has won!!!");
+        counter++;
+        scoreCounter.textContent = counter;
+        //picks a new word
+        wordToGuess = HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)];
+        //sets all the variables back to their original values
+        guessesLeft = 12;
+        console.log("The word to guess is " + wordToGuess);
+        alreadyGuessed = [];
+        lettersAndBlanks = [];
+        lettersGuessed.textContent = "None";
+        guesses = 12;
+        
+
+    }
 }
 console.log("The javascript is running");
