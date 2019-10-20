@@ -24,6 +24,15 @@ var HalloweenWords = ["skeleton",
 //Initialize counter of how many wins at 0
 var winCounter = 0;
 
+//grabs "wins-amount" from the html 
+var scoreCounter = document.getElementById("wins-amount");
+
+//initializes counter as equal to zero, and sends it back
+//to "wins-amount" in the html file
+var counter = 0;
+scoreCounter.textContent = counter;
+console.log("scoreCounter is " + scoreCounter);
+
 //Randomly choose one word from the array HalloweenWords for the user to guess
 var wordToGuess = HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)];
 
@@ -44,8 +53,7 @@ var lettersAndBlanks = [];
 
 lettersGuessed.textContent = "None";
 
-//grabs "wins-amount" from the html 
-var scoreCounter = document.getElementById("wins-amount");
+
 
 //grabs "guesses-left" from the html
 var guessesLeft = document.getElementById("guesses-left");
@@ -54,11 +62,7 @@ var guessesLeft = document.getElementById("guesses-left");
 
 var guesses = 12;
 
-//initializes counter as equal to zero, and sends it back
-//to "wins-amount" in the html file
-var counter = 0;
-scoreCounter.textContent = counter;
-console.log("scoreCounter is " + scoreCounter);
+
 
 
 
@@ -130,6 +134,20 @@ document.onkeyup = function (event) {
     }
 
     console.log("checkLetters is " + checkLetters);
+
+    var checkForBlanks = true;
+
+    if(checkLetters.indexOf("_")==(-1)){
+        checkForBlanks = false;
+    }
+
+    if(!checkForBlanks){
+        console.log("checkForBlanks is false!!!");
+    }
+
+
+
+    
 
 
 
