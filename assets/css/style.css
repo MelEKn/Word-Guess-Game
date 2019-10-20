@@ -1,0 +1,37 @@
+body {
+    /* Box-model */
+    padding: 0;
+  
+    /* Positioning */
+    margin: 25px 40px 25px 40px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  
+    /* Typography */
+    font-size: 18px;
+    line-height: 150%;
+    color: whitesmoke;
+  
+    /* Visual */
+    background: black;
+  }
+  
+  header {
+    background: #d21034;
+  }
+  
+  h1 {
+    /* Box-model */
+    padding: 20px 0;
+  
+    /* Positioning */
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 28px;
+  
+    /* Typography */
+    color: rgb(22, 17, 10);
+    text-align: center;
+  
+    /* Visual */
+    background: rgb(199, 105, 17);
+  }

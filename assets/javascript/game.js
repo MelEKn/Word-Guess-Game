@@ -90,7 +90,6 @@ document.onkeyup = function (event) {
 
     console.log(lettersGuessed);
     var userInput = event.key;
-    alert("You just pushed " + userInput);
 
 
     //initialize variable to say whether the letter was not in the word, and sets it to true
@@ -203,10 +202,9 @@ document.onkeyup = function (event) {
         
 
     }
-
-    //if the user loses, start a new game the same way as above,
+     //if the user loses, start a new game the same way as above,
     //except that "counter" isn't increased
-    if(guesses==0){
+    else if(guesses==0){
         console.log("The user has lost")
         wordToGuess = HalloweenWords[Math.floor(Math.random() * HalloweenWords.length)];
         //sets all the variables back to their original values
