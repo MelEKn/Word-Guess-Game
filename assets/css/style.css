@@ -4,7 +4,7 @@ body {
   
     /* Positioning */
     margin: 25px 40px 25px 40px;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    /* font-family: Georgia, "Times New Roman", Times, serif; */
   
     /* Typography */
     font-size: 18px;
@@ -22,11 +22,12 @@ body {
   h1 {
     /* Box-model */
     padding: 20px 0;
+    font-family: 'Fredericka the Great', fantasy, Times;
   
     /* Positioning */
-    margin: 0;
+    margin: 15px;
     margin-bottom: 20px;
-    font-size: 28px;
+    font-size: 36px;
   
     /* Typography */
     color: rgb(22, 17, 10);
@@ -34,4 +35,11 @@ body {
   
     /* Visual */
     background: rgb(199, 105, 17);
+  }
+
+  .container{
+      width: 768px;
+      margin-left: 100px;
+      font-family: 'Nova Cut', Times, serif;
+
   }
