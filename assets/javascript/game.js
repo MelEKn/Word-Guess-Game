@@ -82,12 +82,11 @@ document.onkeyup = function (event) {
 
 
     //sends guessesLeft back to the HTML
-    guessesLeft.textContent = guesses;
+    // guessesLeft.textContent = guesses;
+    // console.log("first guesses is " + guesses);
 
 
     console.log("lettersAndBlanks is " + lettersAndBlanks);
-    console.log("lettersAndBlanksString is " + lettersAndBlanksString);
-
     console.log(lettersGuessed);
     var userInput = event.key;
 
@@ -131,18 +130,6 @@ document.onkeyup = function (event) {
 
     var hasWon = false;
 
-
-
-
-
-
-    
-
-
-
-    console.log(lettersAndBlanks[i] + " is lettersAndBlanks[i]");
-    console.log("lettersAndBlanks is " + lettersAndBlanks);
-
     //temporarily resets letters-and-blanks to empty
     lettersAndBlanksString.textContent = "";
 
@@ -167,7 +154,7 @@ document.onkeyup = function (event) {
     //sets variable "guesses" to 12 minus however many letters the user has guessed
     guesses = 12 - alreadyGuessed.length;
 
-    console.log("guesses is " + guesses);
+    console.log("second guesses is " + guesses);
 
     console.log("notInWord is " + notInWord);
 
@@ -214,7 +201,7 @@ document.onkeyup = function (event) {
         lettersGuessed.textContent = "None";
         guesses = 12;
         
-        guessesLeft.textContent = guesses;
+        // guessesLeft.textContent = guesses;
         lettersAndBlanksString.textContent = "Oh no, you lost! Press any key to begin another game!"
     }
 }
